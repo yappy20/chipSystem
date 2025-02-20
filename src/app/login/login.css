@@ -1,0 +1,38 @@
+.chipcount {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.LogINcontainer {
+    display: grid;
+    place-items: center;
+    height: 100dvh;
+}
+
+.adminlink {
+    display: block;
+    text-align: center;
+}
+
+.logout {
+    padding: 0.5rem 1rem;
+    width: fit-content;
+}
+
+.loggedincontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 1rem; */
+    animation: gapgap 5s infinite alternate;
+}
+
+@keyframes gapgap {
+    0% {
+        gap: 1rem;
+    }
+
+    100% {
+        gap: 2rem;
+    }
+}

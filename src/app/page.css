@@ -166,3 +166,24 @@ a.secondary {
     filter: invert();
   }
 }
+
+.GetStartedbutton {
+  padding: 0.5rem 1rem;
+  animation: gsbutton 1s infinite alternate ease-in-out;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@keyframes gsbutton {
+  0% {
+    scale: 1;
+  }
+
+  100% {
+    scale: 1.1;
+  }
+}

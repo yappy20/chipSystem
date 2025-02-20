@@ -1,0 +1,7 @@
+td {
+    padding-inline: 1rem;
+}
+
+td:nth-child(2) {
+    text-align: center;
+}
