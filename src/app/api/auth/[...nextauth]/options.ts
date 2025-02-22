@@ -3,11 +3,11 @@ import GitHubProvider from 'next-auth/providers/github'
 //import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaClient } from '@prisma/client';
 
-interface MyUser extends User {
-    id: string; // Make sure id is a string, as expected by NextAuth
-    name: string;
-    password: string;
-}
+//interface MyUser extends User {
+//id: string; // Make sure id is a string, as expected by NextAuth
+//name: string;
+//password: string;
+//}
 
 export const options: NextAuthOptions = {
     providers: [
