@@ -1,6 +1,6 @@
 import type { NextAuthOptions, User } from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
-import CredentialsProvider from 'next-auth/providers/credentials'
+//import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaClient } from '@prisma/client';
 
 interface MyUser extends User {
