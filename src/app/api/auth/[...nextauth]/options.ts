@@ -1,11 +1,10 @@
 import type { NextAuthOptions, User } from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient(); // Singleton PrismaClient
+//import CredentialsProvider from 'next-auth/providers/credentials'
+import { PrismaClient } from '@prisma/client';
 
 interface MyUser extends User {
-    id: string;
+    id: string; // Make sure id is a string, as expected by NextAuth
     name: string;
     password: string;
 }
@@ -16,22 +15,34 @@ export const options: NextAuthOptions = {
             clientId: process.env.GITHUB_ID as string,
             clientSecret: process.env.GITHUB_SECRET as string
         }),
+        // CredentialsProvider({
+        //     name: "Credentials",
+        //     credentials: {
+        //         username: { label: "Username", type: "text", placeholder: "username" },
+        //         password: { label: "Password", type: "password", placeholder: "password" },
+        //     },
+        //     async authorize(credentials) {
+        //         const user: MyUser = { id: '1', name: 'DAVE', password: 'nextAuth' }
+
+        //         if (credentials?.username === user.name && credentials?.password === user.password) {
+        //             return user
+        //         } else {
+        //             return null
+        //         }
+        //     }
+        // })
     ],
-    secret: process.env.NEXTAUTH_SECRET, // Fixed typo (should be NEXTAUTH_SECRET, not NEXT_AUTH_SECRET)
+    secret: process.env.NEXT_AUTH_SECRET,
     callbacks: {
         async signIn({ user }) {
             if (!user.email) return false;
-            try {
-                await prisma.user.upsert({
-                    where: { email: user.email },
-                    update: {},
-                    create: { email: user.email, chips: 0 }
-                });
-                return true;
-            } catch (error) {
-                console.error("Error during signIn:", error);
-                return false;
-            }
+            const prisma = new PrismaClient();
+            prisma.user.upsert({
+                where: { email: user.email },
+                update: {},
+                create: { email: user.email, chips: 0 }
+            })
+            return true;
         },
     }
-};
+}
