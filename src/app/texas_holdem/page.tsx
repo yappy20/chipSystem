@@ -117,16 +117,3 @@ export default function TexasHoldem() {
 import Link from "next/link";
 
 
-export default function Home() {
-    return (
-        <main className="centered"> {/* Use centered class */}
-            <div className="content">
-                <h1>Welcome to The Demo Chip System</h1>
-                <p>This is a Next.js app using the App Router and TypeScript.</p>
-                <Link href="login">
-                    <button className="GetStartedbutton">Get Started</button>
-                </Link>
-            </div>
-        </main>
-    );
-}
