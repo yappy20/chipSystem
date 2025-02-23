@@ -4,8 +4,8 @@ import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import { AdjustChips } from "./AdjustChips";
 import "./admin.css";
+import { ADMIN_EMAILS } from "./vars";
 
-export const ADMIN_EMAILS = ['stein.na@northeastern.edu', 'ednamode2048@gmail.com']
 
 export default async function Page() {
     const session = await getServerSession(options);

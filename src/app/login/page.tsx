@@ -5,8 +5,9 @@ import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 import { LogoutButton } from "./LogoutButton";
 import { ChipsCount } from "./ChipsCount";
-import { ADMIN_EMAILS } from "../admin/page";
+
 import './login.css';
+import { ADMIN_EMAILS } from "../admin/vars";
 export default async function Login() {
     const session = await getServerSession(options);
 

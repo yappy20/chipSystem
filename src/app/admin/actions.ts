@@ -2,7 +2,8 @@
 import { PrismaClient } from "@prisma/client";
 import { options } from "../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
-import { ADMIN_EMAILS } from "./page";
+import { ADMIN_EMAILS } from "./vars";
+
 
 export async function addChips(email: string, amount: number) {
     const session = await getServerSession(options);
