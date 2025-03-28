@@ -22,7 +22,7 @@ export const options: NextAuthOptions = {
         async signIn({ user }) {
             if (!user.email) return false;
             const prisma = new PrismaClient();
-            prisma.user.upsert({
+            await prisma.user.upsert({
                 where: { email: user.email },
                 update: {},
                 create: { email: user.email, chips: 0 }
