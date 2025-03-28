@@ -1,4 +1,5 @@
 "use client";
+import SlotMachine from "./slot_machine/page";
 import Link from "next/link";
 import "./globals.css"; // Import global styles
 import "./page.css"
@@ -12,6 +13,7 @@ export default function Home() {
         <Link href="login">
           <button className="GetStartedbutton">Get Started</button>
         </Link>
+        <SlotMachine />
       </div>
     </main>
   );
