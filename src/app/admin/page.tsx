@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { AdjustChips } from "./AdjustChips";
 import "./admin.css";
 import { ADMIN_EMAILS } from "./vars";
+import { User } from "./User";
 
 
 export default async function Page() {
@@ -19,18 +20,14 @@ export default async function Page() {
                 <th>email</th>
                 <th>chips</th>
                 <th>adjust</th>
+                <th>set</th>
             </tr>
         </thead>
         <tbody>
-            {users.map(u => <tr key={u.email}>
-                <td>{u.email}</td>
-                <td>{u.chips}</td>
-                <td><AdjustChips email={u.email} /></td>
-            </tr>)}
+            {users.map(u => <User defaultChips={u.chips} email={u.email} key={u.email} />)}
         </tbody>
     </table>
 }
-
 //tada it works
 //but u have to refresh the page cause server side rendering and im lazy
 

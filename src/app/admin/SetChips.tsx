@@ -1,8 +1,14 @@
 "use client";
 import { useState } from "react";
-import { addChips } from "./actions";
+import { setChips as setChipsBE } from "./actions";
 
-export function AdjustChips({ email, update }: { email: string, update: (newChips: number) => void; }) {
+export function SetChips({
+  email,
+  update,
+}: {
+  email: string;
+  update: (newChips: number) => void;
+}) {
   const [chips, setChips] = useState("0");
   const [loading, setIsLoading] = useState(false);
 
@@ -13,13 +19,13 @@ export function AdjustChips({ email, update }: { email: string, update: (newChip
       return;
     }
     setIsLoading(true);
-    const newChips = await addChips(email, numChips);
+    const newChips = await setChipsBE(email, numChips);
     if (newChips === null) {
       alert("Something happened, pls sign out and then back in <3");
       return;
     }
-      setChips('0');
-      update(newChips);
+    setChips("0");
+    update(newChips);
     setIsLoading(false);
   }
 
@@ -31,7 +37,7 @@ export function AdjustChips({ email, update }: { email: string, update: (newChip
         onChange={(e) => setChips(e.target.value)}
         disabled={loading}
       />
-      <button onClick={onClick}>Add chips</button>
+      <button onClick={onClick}>Set chips</button>
     </div>
   );
 }

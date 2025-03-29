@@ -1,0 +1,10 @@
+.Slot {
+    /* display: bloc; */
+    height: fit-content;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.Machine {
+    display: flex;
+}
